@@ -8,6 +8,7 @@ package worldwindcontextmenu;
 import gov.nasa.worldwind.BasicModel;
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
+import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.IconLayer;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -48,7 +49,7 @@ public class RestaurantWorldWindExample extends JFrame
         restaurantLayer = new IconLayer();
         // Create some restaurants,
         for (Restaurant r : createDefaultRestaurants()) {
-            RestaurantIcon icon = new RestaurantIcon(r.getLogo(), Position.ZERO, r);
+            RestaurantIcon icon = new RestaurantIcon(r.getLogo(), r.getPosition(), r);
             restaurantLayer.addIcon(icon);
         }
 
@@ -56,8 +57,11 @@ public class RestaurantWorldWindExample extends JFrame
     }
 
     private static List<Restaurant> createDefaultRestaurants() {
-        Restaurant chipotle = new Restaurant("Chipotle", "213 Maple Ave. E, Vienna, VA 22180", "703.255.1100", CHIPOTLE_ICON);
-        Restaurant mcdonalds = new Restaurant("McDonald's", "2912 CHAINBRIDGE RD, OAKTON, VA 22124", "(703)319-0617", MCDONALDS_ICON);
+        Restaurant chipotle = new Restaurant("Chipotle", "213 Maple Ave. E, Vienna, VA 22180", "703.255.1100", 
+                Position.fromDegrees(38.9038999, -77.2622599), CHIPOTLE_ICON);
+        Restaurant mcdonalds = new Restaurant("McDonald's", "2912 CHAINBRIDGE RD, OAKTON, VA 22124", "(703)319-0617",
+                Position.fromDegrees(38.8827459,-77.2990347),
+                MCDONALDS_ICON);
         return Arrays.asList(chipotle, mcdonalds);
     }
 
