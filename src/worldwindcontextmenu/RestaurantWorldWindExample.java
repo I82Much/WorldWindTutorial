@@ -35,7 +35,7 @@ public class RestaurantWorldWindExample extends JFrame
     private static final int ICON_WIDTH = 32;
     private static final int ICON_HEIGHT = 32;
 
-    private static final BufferedImage MCDONALDS_ICON = createIcon(MCDONALDS_ICON_PATH, ICON_WIDTH, ICON_HEIGHT);
+    private static final BufferedImage MCDONALDS_ICON = createIcon(MCDONALDS_ICON_PATH, ICON_WIDTH, -1);
     private static final BufferedImage CHIPOTLE_ICON = createIcon(CHIPOTLE_ICON_PATH, ICON_WIDTH, ICON_HEIGHT);
 
     public RestaurantWorldWindExample()
@@ -61,9 +61,39 @@ public class RestaurantWorldWindExample extends JFrame
         return Arrays.asList(chipotle, mcdonalds);
     }
 
+    /**
+     * Given the path to an image file on disk, creates a BufferedImage out of
+     * that object, scaling it to be size (width, height).
+     *
+     * If width or height is negative, then that dimension is calculated
+     * automatically in order to maintain the aspect ratio.  In other words,
+     * if the original image has an aspect ratio of 2:1 (twice as wide as tall),
+     * and the width is given to be 40, and the height -1, the height will be
+     * calculated as 20.
+     * @param path
+     * @param width
+     * @param height
+     * @return
+     */
     private static BufferedImage createIcon(String path, int width, int height) {
+        if (width < 0 && height < 0) {
+            throw new IllegalArgumentException("At least one dimension must be non-negative");
+        }
+
         try {
             BufferedImage buff = ImageIO.read(new File(path));
+            double aspectRatio = (double) buff.getWidth() / (double) buff.getHeight();
+
+            // calculate the width based on passed in height
+            if (width < 0) {
+                width = (int) (height * aspectRatio);
+            }
+            // Calculate the height based on the passed in width
+            else if (height < 0) {
+                height = (int) (width / aspectRatio);
+            }
+
+
             BufferedImage scaled = new BufferedImage(width, height, buff.getType());
             Graphics2D scaledGraphics = scaled.createGraphics();
             // Copy the icon, but scale it to the desired dimensions
