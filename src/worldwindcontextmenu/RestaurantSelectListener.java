@@ -14,7 +14,7 @@ import javax.swing.Action;
 import javax.swing.JPopupMenu;
 
 /**
- *
+ * Handles popping up a context menu when a restaurant icon is right clicked
  * @author ndunn
  */
 public class RestaurantSelectListener implements SelectListener {

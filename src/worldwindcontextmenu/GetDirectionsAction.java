@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 /**
- *
+ * An action representing looking up the directions to the restaurant.
  * @author ndunn
  */
 public class GetDirectionsAction extends AbstractAction {

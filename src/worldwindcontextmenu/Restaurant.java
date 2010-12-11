@@ -1,15 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package worldwindcontextmenu;
 
 import gov.nasa.worldwind.geom.Position;
 import java.awt.Image;
 
 /**
- *
+ * Represents a restaurant.
  * @author ndunn
  */
 public class Restaurant {

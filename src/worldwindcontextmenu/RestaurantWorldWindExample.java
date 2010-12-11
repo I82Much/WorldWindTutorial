@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /**
- *
+ * The entry point into our example application.  Holds the WorldWind instance
  * @author ndunn
  */
 public class RestaurantWorldWindExample extends JFrame
@@ -33,7 +33,7 @@ public class RestaurantWorldWindExample extends JFrame
     private static final String CHIPOTLE_ICON_PATH = "resources/chipotle_logo.png";
 
     private static final int ICON_WIDTH = 32;
-    private static final int ICON_HEIGHT = 32;
+    private static final int ICON_HEIGHT = ICON_WIDTH;
 
     private static final BufferedImage MCDONALDS_ICON = createIcon(MCDONALDS_ICON_PATH, ICON_WIDTH, -1);
     private static final BufferedImage CHIPOTLE_ICON = createIcon(CHIPOTLE_ICON_PATH, ICON_WIDTH, ICON_HEIGHT);
