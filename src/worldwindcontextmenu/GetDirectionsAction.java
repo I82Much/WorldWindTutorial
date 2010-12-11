@@ -12,15 +12,16 @@ import javax.swing.AbstractAction;
  *
  * @author ndunn
  */
-public class CallRestaurantAction extends AbstractAction {
-
+public class GetDirectionsAction extends AbstractAction {
     private Restaurant restaurant;
-    public CallRestaurantAction(Restaurant restaurant) {
-        super("Call " + restaurant.getName());
+
+    public GetDirectionsAction(Restaurant restaurant) {
+        super("Get directions");
         this.restaurant = restaurant;
     }
 
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("Dialing " + restaurant.getPhoneNumber());
+        System.out.println("Getting directions to " + restaurant.getAddress());
     }
+
 }

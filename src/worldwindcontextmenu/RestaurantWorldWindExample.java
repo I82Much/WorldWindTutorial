@@ -8,7 +8,6 @@ package worldwindcontextmenu;
 import gov.nasa.worldwind.BasicModel;
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.IconLayer;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -54,6 +53,9 @@ public class RestaurantWorldWindExample extends JFrame
         }
 
         wwd.getModel().getLayers().add(restaurantLayer);
+
+        RestaurantSelectListener listener = new RestaurantSelectListener(wwd);
+        wwd.addSelectListener(listener);
     }
 
     private static List<Restaurant> createDefaultRestaurants() {
